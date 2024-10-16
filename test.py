@@ -16,7 +16,7 @@ predict = "G3"
 
 
 # defining the attributes.
-x = np.array(data.drop([predict], 1))
+x = np.array(data.drop([predict], axis=1))
 # defining the labels.
 y = np.array(data[predict])
 # splitting the labels and attributes into 4 variables: "x_train, y_train, x_test, y_test".
@@ -24,6 +24,12 @@ y = np.array(data[predict])
 # y_train is a section of y array.
 # x_test, y_test: these are testing the accuracy of the model we are going to create.
 # The code below is splitting %10 of our data into test samples so when we test we can test off of that and the model has never seen the actual data. (if the model sees the actual data it will memorize it, and we don't want that).
-x_train, y_train, x_test, y_test = sklearn.model_selection.train_test_split(x, y, test_size = 0.1)
+x_train, x_test, y_train, y_test = sklearn.model_selection.train_test_split(x, y, test_size = 0.1)
 
+# creating a training model:
 linear = linear_model.LinearRegression()
+# fitting the data to find the best fit line and store it in "linear".
+linear.fit(x_train, y_train)
+# testing the accuracy of our model.
+acc = linear.score(x_test, y_test)
+print(acc)
