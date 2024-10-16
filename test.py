@@ -33,3 +33,6 @@ linear.fit(x_train, y_train)
 # testing the accuracy of our model.
 acc = linear.score(x_test, y_test)
 print(acc)
+
+print('Coefficient: \n', linear.coef_)
+print('Intercept: \n', linear.intercept_)
