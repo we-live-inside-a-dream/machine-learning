@@ -23,7 +23,7 @@ y = np.array(data[predict])
 # x_train is a section of x array.
 # y_train is a section of y array.
 # x_test, y_test: these are testing the accuracy of the model we are going to create.
-# The code below is splitting %10 of our data into test samples so when we test we can test off of that and the model has never seen the actual data. (if the model sees the actual data it will memorize it, and we don't want that).
+# (Splitting the data into training and testing sets) The code below is splitting %10 of our data into test samples so when we test we can test off of that and the model has never seen the actual data. (if the model sees the actual data it will memorize it, and we don't want that).
 x_train, x_test, y_train, y_test = sklearn.model_selection.train_test_split(x, y, test_size = 0.1)
 
 # creating a training model:
@@ -36,3 +36,8 @@ print(acc)
 
 print('Coefficient: \n', linear.coef_)
 print('Intercept: \n', linear.intercept_)
+
+predictions = linear.predict(x_test)
+
+for x in range(len(predictions)) :
+    print(predictions[x], x_test[x], y_test[x])
