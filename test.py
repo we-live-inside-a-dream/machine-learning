@@ -40,4 +40,5 @@ print('Intercept: \n', linear.intercept_)
 predictions = linear.predict(x_test)
 
 for x in range(len(predictions)) :
+    #printing the prediction with the actual attributes and the actual final grade
     print(predictions[x], x_test[x], y_test[x])
