@@ -7,6 +7,8 @@ from sklearn.utils import shuffle
 import tensorflow
 import keras
 import matplotlib.pyplot as pyplot
+import matplotlib
+matplotlib.use('TkAgg')
 import pickle
 from matplotlib import style
 
@@ -31,6 +33,7 @@ y = np.array(data[predict])
 x_train, x_test, y_train, y_test = sklearn.model_selection.train_test_split(x, y, test_size = 0.1)
 
 '''
+# training the data 30 times and storing the best model in "best" variable.
 best = 0
 for _ in range(30):
     x_train, x_test, y_train, y_test = sklearn.model_selection.train_test_split(x, y, test_size = 0.1)
@@ -60,3 +63,12 @@ predictions = linear.predict(x_test)
 for x in range(len(predictions)) :
     #printing the prediction with the actual attributes and the actual final grade
     print(predictions[x], x_test[x], y_test[x])
+
+
+p = 'G1'
+style.use("ggplot")
+pyplot.scatter(data[p], data["G3"])
+pyplot.xlabel(p)
+pyplot.ylabel("Final Grade")
+pyplot.show()
+
