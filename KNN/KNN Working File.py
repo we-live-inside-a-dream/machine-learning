@@ -7,11 +7,11 @@ from sklearn import linear_model, preprocessing
 
 #Using panda to read in the file
 data = pd.read_csv("KNN/car.data")
-print(data.head())
+# print(data.head())
 
 #Taking the labels and encoding them to integer values
 le = preprocessing.LabelEncoder()
-#Taking the "buying" column and turning them into a list and then transforming those into integer values
+#Taking the columns and turning them into a list and then transforming those into integer values
 buying = le.fit_transform(list(data["buying"]))
 maint = le.fit_transform(list(data["maint"]))
 door = le.fit_transform(list(data["door"]))
@@ -28,4 +28,8 @@ y = list(cls)
 
 x_train, x_test, y_train, y_test = sklearn.model_selection.train_test_split(x, y, test_size = 0.1)
 
-print(x_train, "x_train", y_test, "y_train")
+model = KNeighborsClassifier(n_neighbors=9)
+
+model.fit(x_train, y_train)
+acc = model.score(x_test, y_test)
+print(acc)
