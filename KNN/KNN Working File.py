@@ -28,8 +28,18 @@ y = list(cls)
 
 x_train, x_test, y_train, y_test = sklearn.model_selection.train_test_split(x, y, test_size = 0.1)
 
+#Assigning K
 model = KNeighborsClassifier(n_neighbors=9)
 
 model.fit(x_train, y_train)
 acc = model.score(x_test, y_test)
 print(acc)
+
+#Uses the trained K-Nearest Neighbors (KNN) model to predict the class labels for the test data x_test
+predicted = model.predict(x_test)
+#Defines a list of class names corresponding to the encoded class labels.
+names = ["unacc", "acc", "good", "vgood"]
+
+#For each test instance, it prints the predicted class name, the test data instance, and the actual class name.
+for x in range(len(x_test)):
+    print("Predicted ", names[predicted[x]], "Data ", x_test[x], "Actual: ", names[y_test[x]])
