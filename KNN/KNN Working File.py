@@ -43,3 +43,5 @@ names = ["unacc", "acc", "good", "vgood"]
 #For each test instance, it prints the predicted class name, the test data instance, and the actual class name.
 for x in range(len(x_test)):
     print("Predicted ", names[predicted[x]], "Data ", x_test[x], "Actual: ", names[y_test[x]])
+    n = model.kneighbors([x_test[x]], 9, True)
+    print("N: ", n)
